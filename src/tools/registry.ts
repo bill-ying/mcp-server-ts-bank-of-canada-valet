@@ -47,7 +47,7 @@ export class ToolRegistry {
           ...(tool.annotations ? { annotations: tool.annotations } : {}),
         },
         async (args: any) => {
-          return tool.run(args) as any;
+          return tool.run(args);
         },
       );
     }

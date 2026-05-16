@@ -6,7 +6,8 @@
  */
 
 import { z } from "zod";
-import { BaseTool, type ToolResponse } from "./base.tool.js";
+import { type CallToolResult } from "@modelcontextprotocol/sdk/types.js";
+import { BaseTool } from "./base.tool.js";
 import { Currency, type ExchangeResult } from "../domain/types.js";
 import { FxRateService } from "../domain/fx-rate.service.js";
 
@@ -62,7 +63,7 @@ export class GetRateTool extends BaseTool<
     );
   }
 
-  protected formatResult(result: ExchangeResult | null): ToolResponse {
+  protected formatResult(result: ExchangeResult | null): CallToolResult {
     if (!result) {
       return {
         content: [

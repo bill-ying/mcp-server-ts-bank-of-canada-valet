@@ -40,7 +40,7 @@ Start the Wrangler dev server:
 npm run dev
 ```
 
-The MCP server will be available at `http://localhost:8788/mcp`.
+The MCP server will be available at `http://localhost:8787/mcp`.
 
 ### Testing
 

@@ -32,12 +32,10 @@
   "homepage": "https://github.com/bill-ying/mcp-server-ts-bank-of-canada-valet#readme",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
-    "zod": "^3.24.0",
-    "zod-to-json-schema": "^3.25.2"
+    "zod": "^3.24.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20260510.1",
-    "tsx": "^4.22.0",
     "typescript": "^5.7.0",
     "vitest": "^3.0.0",
     "wrangler": "^4.90.0"

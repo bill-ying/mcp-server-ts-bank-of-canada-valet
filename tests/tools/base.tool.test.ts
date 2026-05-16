@@ -6,7 +6,8 @@
 
 import { describe, it, expect } from "vitest";
 import { z } from "zod";
-import { BaseTool, type ToolResponse } from "../../src/tools/base.tool.js";
+import { type CallToolResult } from "@modelcontextprotocol/sdk/types.js";
+import { BaseTool } from "../../src/tools/base.tool.js";
 
 /** Concrete test tool for verifying the template method. */
 class TestTool extends BaseTool<typeof TestSchema.shape, string> {
@@ -18,7 +19,7 @@ class TestTool extends BaseTool<typeof TestSchema.shape, string> {
     return `processed:${args.input}`;
   }
 
-  protected formatResult(result: string): ToolResponse {
+  protected formatResult(result: string): CallToolResult {
     return { content: [{ type: "text", text: result }] };
   }
 }
@@ -37,7 +38,7 @@ class FailingTool extends BaseTool<typeof TestSchema.shape, string> {
     throw new Error("Execution failed");
   }
 
-  protected formatResult(result: string): ToolResponse {
+  protected formatResult(result: string): CallToolResult {
     return { content: [{ type: "text", text: result }] };
   }
 }

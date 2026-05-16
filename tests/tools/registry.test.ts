@@ -5,7 +5,8 @@
 import { describe, it, expect, vi } from "vitest";
 import { ToolRegistry } from "../../src/tools/registry.js";
 import { z } from "zod";
-import { BaseTool, type ToolResponse } from "../../src/tools/base.tool.js";
+import { type CallToolResult } from "@modelcontextprotocol/sdk/types.js";
+import { BaseTool } from "../../src/tools/base.tool.js";
 
 const DummySchema = z.object({
   value: z.string(),
@@ -25,7 +26,7 @@ class DummyTool extends BaseTool<typeof DummySchema.shape, string> {
     return args.value;
   }
 
-  protected formatResult(result: string): ToolResponse {
+  protected formatResult(result: string): CallToolResult {
     return { content: [{ type: "text", text: result }] };
   }
 }

@@ -11,20 +11,10 @@
  */
 
 import { z } from "zod";
-import { type ToolAnnotations } from "@modelcontextprotocol/sdk/types.js";
-
-/** Standard MCP tool response content item. */
-export interface ToolContent {
-  type: "text";
-  text: string;
-}
-
-/** Standard MCP tool response shape. */
-export interface ToolResponse {
-  content: ToolContent[];
-  structuredContent?: Record<string, unknown>;
-  isError?: boolean;
-}
+import {
+  type CallToolResult,
+  type ToolAnnotations,
+} from "@modelcontextprotocol/sdk/types.js";
 
 export abstract class BaseTool<
   TSchema extends z.ZodRawShape = z.ZodRawShape,
@@ -41,7 +31,7 @@ export abstract class BaseTool<
    * Template Method: validates input, executes logic, formats output.
    * This method should not be overridden by subclasses.
    */
-  async run(args: unknown): Promise<ToolResponse> {
+  async run(args: unknown): Promise<CallToolResult> {
     const validatedArgs = this.schema.parse(args);
     const result = await this.execute(validatedArgs);
     return this.formatResult(result);
@@ -53,5 +43,6 @@ export abstract class BaseTool<
   ): Promise<TResult>;
 
   /** Hook: Format the result into an MCP-compliant response. */
-  protected abstract formatResult(result: TResult): ToolResponse;
+  protected abstract formatResult(result: TResult): CallToolResult;
 }
+
