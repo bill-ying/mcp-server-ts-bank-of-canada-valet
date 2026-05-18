@@ -114,6 +114,14 @@ Push to main ─┤                            ├→ Deploy to CF Workers
 
 The pipeline skips runs when only `README.md`, `LICENSE`, or `docs/**` files change.
 
+
+## MCP Server Links
+```
+https://mcp-server-bank-of-canada-valet.bill-ying.workers.dev/mcp
+https://smithery.ai/servers/bill-ying/bank-of-canada-foreign-exchange
+```
+
+
 ## Debugging
 ```
 npx wrangler dev --inspector-port 9229
